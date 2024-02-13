@@ -1,14 +1,6 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_ViewMrch(QtWidgets.QWidget):
-    def __init__(self, parent=None):
-        super(Ui_ViewMrch, self).__init__(parent)
-
-        self.frame = QtWidgets.QFrame(self)
-        self.frame.setGeometry(10, 10, 1200, 740)
-        self.frame.setObjectName('frame')
-
 
 class Ui_InputMrch(QtWidgets.QMainWindow):
     def __init__(self, parent=None):
@@ -19,23 +11,23 @@ class Ui_InputMrch(QtWidgets.QMainWindow):
         self.setFixedSize(1500, 900)
         self.centralwidget = QtWidgets.QWidget(self)
         self.centralwidget.setObjectName("centralwidget")
-        # self.centralwidget.setStyleSheet("background-color: red;")
 
         self.frame = QtWidgets.QFrame(self.centralwidget)
         self.frame.setGeometry(QtCore.QRect(20, 50, 710, 820))
         self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
-        # self.frame.setStyleSheet("background-color: black;")
         self.frame.setObjectName("frame")
 
         self.tableWidget = QtWidgets.QTableWidget(self.frame)
         self.tableWidget.setGeometry(QtCore.QRect(10, 10, 690, 800))
+
         # self.tableWidget.setStyleSheet("background-color: yellow;")
         # sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         # sizePolicy.setHorizontalStretch(0)
         # sizePolicy.setVerticalStretch(0)
         # sizePolicy.setHeightForWidth(self.tableWidget.sizePolicy().hasHeightForWidth())
         # self.tableWidget.setSizePolicy(sizePolicy)
+
         self.tableWidget.setMaximumSize(QtCore.QSize(690, 800))
         self.tableWidget.setAutoFillBackground(False)
         self.tableWidget.setFrameShape(QtWidgets.QFrame.StyledPanel)
@@ -121,7 +113,7 @@ class Ui_InputMrch(QtWidgets.QMainWindow):
                                        "QTableWidget::item{\n"
                                        "font-family: Arial;\n"
                                        "font-size: 1px;\n"
-                                       "background-color: #DDDDDD;\n"
+                                       "background-color: ;\n"
                                        "border: 1px solid black;\n"
                                        "padding: 0px;\n"
                                        "color:black;\n"                            
@@ -181,40 +173,72 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
         super(Ui_MainWindow, self).__init__(parent)
         self.setObjectName("MainWindow")
         # self.resize(710, 233)
-        self.setGeometry(250, 80, 1500, 900)
-        self.centralwidget = QtWidgets.QWidget(self)
-        self.centralwidget.setObjectName("centralwidget")
+        self.setGeometry(250, 60, 1550, 940)
+        # self.centralwidget = QtWidgets.QWidget(self)
+        # self.centralwidget.setObjectName("centralwidget")
 
-        self.topFrame = QtWidgets.QFrame(self.centralwidget)
-        self.topFrame.setGeometry(10, 30, 1480, 55)
-        self.topFrame.setObjectName('topFrame')
+        self.leftFrame = QtWidgets.QFrame(self)
+        self.leftFrame.setGeometry(0, 0, 301, 960)
+        self.leftFrame.setObjectName("leftFrame")
+
+        self.rightFrame = QtWidgets.QFrame(self)
+        self.rightFrame.setGeometry(301, 0, 1350, 960)
+        self.rightFrame.setObjectName("rightFrame")
+
+        self.centralFrame = QtWidgets.QFrame(self)
+        self.centralFrame.setGeometry(100, 150, 1350, 640)
+        # self.opacity = QtWidgets.QGraphicsOpacityEffect()
+        # self.opacity.setOpacity(0.2)
+        # self.centralFrame.setGraphicsEffect(self.opacity)
+        self.centralFrame.setObjectName('centralFrame')
+
+        self.centralLeftFrame = QtWidgets.QFrame(self.centralFrame)
+        self.centralLeftFrame.setGeometry(0, 0, 200, 640)
+        self.centralLeftFrame.setObjectName('centralLeftFrame')
         # self.topFrame.setStyleSheet("border: 1px solid black;")
 
-        self.bottomFrame = QtWidgets.QFrame(self.centralwidget)
-        self.bottomFrame.setGeometry(10, 95, 1480, 760)
-        self.topFrame.setObjectName('bottomFrame')
+        self.centralRightFrame = QtWidgets.QFrame(self.centralFrame)
+        self.centralRightFrame.setGeometry(200, 0, 1150, 640)
+        self.centralRightFrame.setObjectName('centralRightFrame')
         # self.bottomFrame.setStyleSheet("border: 1px solid black;")
 
-        self.addBtn = QtWidgets.QPushButton('Add', self.topFrame)
-        self.addBtn.setGeometry(QtCore.QRect(10, 5, 180, 45))
+        self.homeBtn = QtWidgets.QPushButton('Home', self.centralLeftFrame)
+        self.homeBtn.setGeometry(QtCore.QRect(0, 100, 200, 45))
+        self.homeBtn.setObjectName("homeBtn")
+
+        self.addBtn = QtWidgets.QPushButton('Add', self.centralLeftFrame)
+        self.addBtn.setGeometry(QtCore.QRect(0, 170, 200, 45))
         self.addBtn.setObjectName("addBtn")
 
-        self.viewBtn = QtWidgets.QPushButton('View', self.topFrame)
-        self.viewBtn.setGeometry(QtCore.QRect(250, 5, 180, 45))
+        self.viewBtn = QtWidgets.QPushButton('View', self.centralLeftFrame)
+        self.viewBtn.setGeometry(QtCore.QRect(0, 240, 200, 45))
         self.viewBtn.setObjectName("viewBtn")
 
-        self.removeBtn = QtWidgets.QPushButton('Remove', self.topFrame)
-        self.removeBtn.setGeometry(QtCore.QRect(500, 5, 180, 45))
+        self.removeBtn = QtWidgets.QPushButton('Remove', self.centralLeftFrame)
+        self.removeBtn.setGeometry(QtCore.QRect(0, 310, 200, 45))
         self.removeBtn.setObjectName("removeBtn")
 
-        self.setCentralWidget(self.centralwidget)
-        self.statusbar = QtWidgets.QStatusBar(self)
-        self.statusbar.setObjectName("statusbar")
-        self.setStatusBar(self.statusbar)
+        self.tableWidget = QtWidgets.QTableWidget(self.centralRightFrame)
+        self.tableWidget.setGeometry(QtCore.QRect(15, 25, 1100, 580))  # 1150 640
+
+        self.tableWidget.setMaximumSize(QtCore.QSize(1450, 740))
+        self.tableWidget.setAutoFillBackground(True)
+        self.tableWidget.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.tableWidget.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.tableWidget.setColumnCount(8)
+        self.tableWidget.setRowCount(100)
+        self.tableWidget.setHorizontalHeaderLabels([str(i + 1) for i in range(8)])
+        self.tableWidget.setEditTriggers(QtWidgets.QTableWidget.NoEditTriggers)
+        self.tableWidget.verticalHeader().setVisible(False)
+
+        # self.setCentralWidget(self.centralwidget)
+        # self.statusbar = QtWidgets.QStatusBar(self)
+        # self.statusbar.setObjectName("statusbar")
+        # self.setStatusBar(self.statusbar)
 
         self.retranslateUi()
         self.setStyle()
-        self.pulldata()
+        # self.pulldata()
 
         self.addBtn.clicked.connect(self.onAddButtonClick)
         self.viewBtn.clicked.connect(self.onViewButtonClick)
@@ -222,34 +246,7 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
         QtCore.QMetaObject.connectSlotsByName(self)
 
     def pulldata(self):
-        self.tableWidget = QtWidgets.QTableWidget(self.bottomFrame)
-        self.tableWidget.setGeometry(QtCore.QRect(10, 10, 1450, 740))
-
-        self.tableWidget.setMaximumSize(QtCore.QSize(1450, 740))
-        self.tableWidget.setAutoFillBackground(True)
-        self.tableWidget.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.tableWidget.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.tableWidget.setColumnCount(22)
-        self.tableWidget.setRowCount(100)
-        self.tableWidget.setHorizontalHeaderLabels([str(i+1) for i in range(22)])
-        self.tableWidget.setEditTriggers(QtWidgets.QTableWidget.NoEditTriggers)
-
-        self.tableWidget.setStyleSheet(""" QTableWidget {
-                                                background-color: white;
-                                                alternate-background-color: lightgray;
-                                                border: 1px solid black;
-                                            }
-                                            QHeaderView {
-                                                background-color: red;
-                                                border: 1px solid darkblue;
-                                            }
-                                            QTableWidget::item:selected  {
-                                            background-color: lightgray;
-                                            
-                                            }
-
-
-                """)
+        pass
 
     def onAddButtonClick(self):
         print("Add Clicked")
@@ -272,33 +269,141 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
         self.removeBtn.setText(_translate("MainWindow", "Remove Merchants"))
 
     def setStyle(self):
-        # self.centralwidget("border")
-        self.setStyleSheet("background-color: #d8f6ff;")
+        # self.setStyleSheet("background-color: red;") 1f2437
 
-        self.addBtn.setStyleSheet("background-color: #2b5869;\n"
+        self.centralFrame.setStyleSheet(""" QFrame#centralFrame{
+                                                
+                                                border-radius: 20px;
+                                            }"""
+                                        )
+
+        self.leftFrame.setStyleSheet("""background-color: #c4cee5;
+                                    """)
+
+        self.rightFrame.setStyleSheet("""background-color: #dbe2f4;
+                                            """)
+
+        self.centralLeftFrame.setStyleSheet("""background-color: #272d45;
+                                                border-top-left-radius: 20px;
+                                                border-bottom-left-radius: 20px;
+                                                
+                                                
+                                            """)#border: 2px solid white;
+
+        self.centralRightFrame.setStyleSheet("""background-color: #1f2437;
+                                                border-top-right-radius: 20px;
+                                                border-bottom-right-radius: 20px;
+                                            """)
+
+        self.homeBtn.setStyleSheet("background-color: #272d45;\n"
                                   "font-family: Arial;\n"
                                   "font-size: 18px;\n"
                                   "font-weight: bold;\n"
-                                  "color: #a9f1f6;\n"
-                                  "border-radius: 5px"
+                                  "color: #a5a7af;\n"
+                                  "border-radius: 5px;\n"
+                                  "text-align: right;\n"
+                                  "padding-right: 10px;"
+                                  "}\n"
+                                  "\n"
+                                  "QPushButton:hover {\n"
+                                  "background-color: #2a324f;\n"
+                                  "color: white"
                                   "}")
-        self.viewBtn.setStyleSheet("background-color: #2b5869;\n"
+
+        self.addBtn.setStyleSheet("background-color: #272d45;\n"
+                                  "font-family: Arial;\n"
+                                  "font-size: 18px;\n"
+                                  "font-weight: bold;\n"
+                                  "color: #a5a7af;\n"
+                                  "border-radius: 5px;\n"
+                                  "text-align: right;\n"
+                                  "padding-right: 10px;"
+                                  "}\n"
+                                  "\n"
+                                  "QPushButton:hover {\n"
+                                  "background-color: #2a324f;\n"
+                                  "color: white"
+                                  "}")
+
+        self.viewBtn.setStyleSheet("QPushButton{\n"
+                                   "background-color: #272d45;\n"
                                    "font-family: Arial;\n"
                                    "font-size: 18px;\n"
                                    "font-weight: bold;\n"
-                                   "color: #a9f1f6;\n"
-                                   "border-radius: 5px"
-                                   "}")
+                                   "color: #a5a7af;\n"
+                                   "border-radius: 5px;\n"
+                                   "text-align: right;\n"
+                                   "padding-right: 10px;\n"
+                                   "}\n"
 
-        self.removeBtn.setStyleSheet("background-color: #2b5869;\n"
+                                   "QPushButton:hover {\n"
+                                   "background-color: #2a324f;\n"
+                                   "color: white"
+                                   "}"
+
+                                   )
+
+        self.removeBtn.setStyleSheet("background-color: #272d45;\n"
                                      "font-family: Arial;\n"
                                      "font-size: 18px;\n"
                                      "font-weight: bold;\n"
-                                     "color: #a9f1f6;\n"
-                                     "border-radius: 5px"
+                                     "color: #a5a7af;\n"
+                                     "border-radius: 5px;\n"
+                                     "text-align: right;\n"
+                                     "padding-right: 10px;"
+                                     "}\n"
+                                     "\n"
+                                     "QPushButton:hover {\n"
+                                     "background-color: #2a324f;\n"
+                                     "color: white"
                                      "}")
 
+        self.tableWidget.setStyleSheet(""" QTableWidget {
+                                                    background-color: #2a324f;
+                                                    border-radius: 5px;
+                                                    border: 1px solid white;
+                                                    gridline-color: #fffff8;
+                                            }
+                                                    
+                                            QTableWidget::item:selected  {
+                                                    background-color: #fefefe;
+                                            }
+                                            
+                                            QTableWidget::item{
+                                                   font-family: Arial;
+                                                   font-size: 1px;
+                                                   
+                                                   padding: 0px;
+                                                   color:black;                       
+                                            }
 
+                        """)
+        #ededed headers # background-color: red; border: 1.5px solid #757a8d;
+
+        # self.tableWidget.horizontalHeader().setStyleSheet("""   QHeaderView::section {
+        #                                                         background-color: #ececec;
+        #                                                         border: 1px solid black;
+        #                                                 }
+        # """)
+
+        self.tableWidget.horizontalHeader().setStyleSheet("""
+                                                QHeaderView::section {
+                                                background-color: #40a3f3; 
+                                                color: white;  
+                                                font-family: Arial;  
+                                                font-weight: bold;  
+                                                }""")
+
+        self.tableWidget.verticalHeader().setStyleSheet("""
+                                                QHeaderView::section {
+                                                background-color: #1b2027;  
+                                                color: white;  
+                                                font-family: Arial;  
+                                                font-weight: bold;  
+                                                }""")
+
+        self.tableWidget.verticalScrollBar().setStyleSheet("background-color: #23283a;")
+        self.tableWidget.horizontalScrollBar().setStyleSheet("background-color: #23283a;")
 
 if __name__ == "__main__":
     import sys
