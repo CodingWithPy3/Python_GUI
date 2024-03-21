@@ -1,0 +1,73 @@
+from PyQt5 import QtCore, QtGui, QtWidgets
+
+
+class Ui_Form(object):
+    def setupUi(self, Form):
+        Form.setObjectName("Form")
+        Form.resize(560, 380)
+        self.gridLayout = QtWidgets.QGridLayout(Form)
+        self.gridLayout.setObjectName("gridLayout")
+        self.TOP_FRAME = QtWidgets.QFrame(Form)
+        self.TOP_FRAME.setStyleSheet("QFrame#TOP_FRAME {border: 1px solid black;}")
+        self.TOP_FRAME.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.TOP_FRAME.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.TOP_FRAME.setObjectName("TOP_FRAME")
+        self.gridLayout_3 = QtWidgets.QGridLayout(self.TOP_FRAME)
+        self.gridLayout_3.setContentsMargins(-1, 0, 0, 0)
+        self.gridLayout_3.setHorizontalSpacing(4)
+        self.gridLayout_3.setVerticalSpacing(0)
+        self.gridLayout_3.setObjectName("gridLayout_3")
+        self.label = QtWidgets.QLabel(self.TOP_FRAME)
+        self.label.setAlignment(QtCore.Qt.AlignCenter)
+        self.label.setObjectName("label")
+        self.gridLayout_3.addWidget(self.label, 0, 0, 1, 1)
+        self.FILE_LE = QtWidgets.QLineEdit(self.TOP_FRAME)
+        self.FILE_LE.setMinimumSize(QtCore.QSize(0, 0))
+        self.FILE_LE.setObjectName("FILE_LE")
+        self.gridLayout_3.addWidget(self.FILE_LE, 0, 1, 1, 1)
+        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout_3.addItem(spacerItem, 0, 3, 1, 1)
+        self.UPLOAD_BTN = QtWidgets.QPushButton(self.TOP_FRAME)
+        self.UPLOAD_BTN.setObjectName("UPLOAD_BTN")
+        self.gridLayout_3.addWidget(self.UPLOAD_BTN, 1, 1, 1, 1)
+        self.toolButton = QtWidgets.QToolButton(self.TOP_FRAME)
+        self.toolButton.setObjectName("toolButton")
+        self.gridLayout_3.addWidget(self.toolButton, 0, 2, 1, 1)
+        self.gridLayout_3.setColumnStretch(0, 1)
+        self.gridLayout_3.setColumnStretch(1, 5)
+        self.gridLayout_3.setColumnStretch(2, 1)
+        self.gridLayout_3.setColumnStretch(3, 3)
+        self.gridLayout.addWidget(self.TOP_FRAME, 0, 0, 1, 1)
+        self.BOTTOM_FRAME = QtWidgets.QFrame(Form)
+        self.BOTTOM_FRAME.setStyleSheet("QFrame#BOTTOM_FRAME{border: 1px solid black;}")
+        self.BOTTOM_FRAME.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.BOTTOM_FRAME.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.BOTTOM_FRAME.setObjectName("BOTTOM_FRAME")
+        self.gridLayout_4 = QtWidgets.QGridLayout(self.BOTTOM_FRAME)
+        self.gridLayout_4.setObjectName("gridLayout_4")
+        self.tableView = QtWidgets.QTableView(self.BOTTOM_FRAME)
+        self.tableView.setObjectName("tableView")
+        self.gridLayout_4.addWidget(self.tableView, 0, 0, 1, 1)
+        self.gridLayout.addWidget(self.BOTTOM_FRAME, 1, 0, 1, 1)
+        self.gridLayout.setRowStretch(0, 1)
+        self.gridLayout.setRowStretch(1, 4)
+
+        self.retranslateUi(Form)
+        QtCore.QMetaObject.connectSlotsByName(Form)
+
+    def retranslateUi(self, Form):
+        _translate = QtCore.QCoreApplication.translate
+        Form.setWindowTitle(_translate("Form", "Form"))
+        self.label.setText(_translate("Form", "Select File"))
+        self.UPLOAD_BTN.setText(_translate("Form", "Upload"))
+        self.toolButton.setText(_translate("Form", "..."))
+
+
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    Form = QtWidgets.QWidget()
+    ui = Ui_Form()
+    ui.setupUi(Form)
+    Form.show()
+    sys.exit(app.exec_())
